@@ -2,8 +2,9 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 import App from './App';
 
-test('renders learn react link', () => {
+test('renders environment configuration details', () => {
   render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+  expect(screen.getByText(/weather updates without the clutter/i)).toBeInTheDocument();
+  expect(screen.getByText(/environment/i)).toBeInTheDocument();
+  expect(screen.getByText(/api base url/i)).toBeInTheDocument();
 });

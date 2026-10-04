@@ -23,6 +23,30 @@ export async function resetPasswordAction({ request }: ActionFunctionArgs): Prom
 		};
 	}
 
+	try {
+    const headers = {
+      "Content-Type": "application/json",
+      "apiKey": process.env.REACT_APP_API_KEY ?? "",
+    };
+
+    const response = await fetch(`${process.env.REACT_APP_API_BASE_URL}/accounts/reset-password`, {
+      method: "POST",
+      body: JSON.stringify({ email }),
+      headers: headers,
+    });
+	if(response.ok) {
+		// Password reset request successful, do nothing special here
+		localStorage.setItem("jwt_token", (await response.json()).token);
+	} else {
+		(() => { throw new Error('Password reset request failed.'); })();
+	}
+  } catch (error) {
+    console.error("Password reset request failed:", error);
+    return {
+      errors: ["Password reset request failed. Please try again."],
+      values: { email },
+    };
+  }
 	return {
 		success: 'Password reset request submitted successfully.',
 		values: { email },

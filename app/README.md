@@ -29,6 +29,26 @@ Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
+## Environment setup
+
+This app now includes separate environment files for development and production:
+
+- `.env.development`
+- `.env.production`
+
+The following variables are available:
+
+- `REACT_APP_APP_NAME`: display name shown in the UI
+- `REACT_APP_ENVIRONMENT`: current environment label
+- `REACT_APP_API_BASE_URL`: API base URL used by the frontend configuration
+
+Create React App loads these automatically:
+
+- `npm start` uses `.env.development`
+- `npm run build` uses `.env.production`
+
+For machine-specific overrides, add one of the ignored local files such as `.env.development.local` or `.env.production.local`.
+
 ### `npm run eject`
 
 **Note: this is a one-way operation. Once you `eject`, you can’t go back!**
