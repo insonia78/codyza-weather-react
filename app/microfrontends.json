@@ -9,7 +9,7 @@
     "codyza-weather-angular": {
       "routing": [
         {
-          "paths": ["/","/dashboard"]
+          "paths": ["/dashboard"]
         }
       ]
     }
